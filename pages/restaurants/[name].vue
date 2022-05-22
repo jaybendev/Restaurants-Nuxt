@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import restaurants from "@/data.json"
 
-const route = useRoute()
-const name = route.params.name
 
-const restaurant = restaurants.find(r => r.name === name)
 
-// if (restaurant == null) {
-//     navigateTo("/404")
-// }
+const route = useRoute();
+const name = route.params.name;
+
+const restaurant = restaurants.find(r => r.name === name);
+
+useHead({
+    title: restaurant ? name : "404 - Restaurant not found",
+    meta: [
+        {
+            name: "viewport",
+            content: "width=device-width",
+        }
+    ]
+})
+
 
 </script>
 
